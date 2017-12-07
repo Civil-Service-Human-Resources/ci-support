@@ -19,20 +19,6 @@ checkout:
     post:
         - git clone git@github.com:Civil-Service-Human-Resources/ci-support.git
 
-dependencies:
-    override:
-        # Set up the registry credentials
-        - ci-support/docker/credentials.sh
-        # Download the existing images to use the cache as much as possible
-        - ci-support/docker/pull.sh
-        # Build the new docker image
-        - ci-support/docker/build.sh
-
-test:
-    override:
-        # Custom tests. This is different in every repository
-        - echo "Test!"
-
 deployment:
     docker:
         branch: [develop, master]
